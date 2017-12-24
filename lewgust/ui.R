@@ -51,8 +51,21 @@ shinyUI(fluidPage(
         
       )
     ),
-    tabPanel("Your Preferences",
-             verbatimTextOutput("summary")),
+    tabPanel("Who likes what",
+             sidebarLayout(
+               sidebarPanel(
+                 width = 3,
+                 selectInput("plot_type", "Plot by",
+                             choices = c("Ingredient" = "ingredient", 
+                                         "Person" = "person"),
+                             selected = "ingredient"),
+                  uiOutput("pref_selector")),
+               mainPanel(
+                 width = 9,
+                 plotOutput("preference_plot")
+                 )
+               )
+             ),
     tabPanel("Ingredient Graph",
              sidebarLayout(
                sidebarPanel(

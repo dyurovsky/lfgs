@@ -15,6 +15,9 @@ GAP_KEY <- "12deHY0Q_H7W6NrK2K4TlIWZvlXTCcRqpiAGDB1gVvjI"
 output_data <- GAP_KEY %>%
   gs_key()
 
+
+starting_data <- gs_read_csv(output_data)
+
 ingredients <- read_feather("../processed_data/american_ingredients.feather") %>%
   rename(id = ingredient,
          value = n,
@@ -28,4 +31,17 @@ pairs <- read_feather("../processed_data/all_pairs.feather") %>%
 
 cuisines <- pairs %>% distinct(type) %>% pull()
 
-people <- c("Everyone", "Molly", "Dan", "Marshall", "Bonnie", "Heather", "Logan")
+people <- c("Everyone", starting_data %>% distinct(person) %>% pull())
+
+theme_set(theme_classic(base_size = 16))
+
+ingredient_palette <- data_frame(color = c("#a6cee3", "#1f78b4", "#b2df8a", 
+                                           "#33a02c", "#fb9a99", "#e31a1c", 
+                                           "#fdbf6f", "#ff7f00", "#cab2d6", 
+                                           "#6a3d9a", "#ffff99", "#b15928",
+                                           "#f0f0f0", "#bdbdbd"),
+                      group = unique(ingredients$group))
+
+ingredients_colored <- left_join(ingredients, ingredient_palette)
+
+
