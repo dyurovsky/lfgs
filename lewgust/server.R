@@ -3,8 +3,6 @@ getNewIngred  <- function(this_person, pref_data){
   current_data <- pref_data %>%
     filter(person == this_person)
   
-  print(current_data)
-  
   sampled <- ingredients %>%
      anti_join(current_data %>% rename(id = ingredient), by = "id") %>%
      sample_n(1, weight = sampling_weights)

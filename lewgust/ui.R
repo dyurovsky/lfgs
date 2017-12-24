@@ -8,7 +8,35 @@ shinyUI(fluidPage(
   ),
   
   navbarPage(
-    "LewGust",
+    "Lewis Family Food Map",
+    
+    tabPanel(
+      "What is this",
+      fluidRow(column( 12,
+                       h2(em("Merry Christmas, Lewises!"),  style = "color:red") 
+      )),
+      br(),
+      fluidRow(
+        column(12, align = "center",
+               img(src = "bigpic.png", width = 800)
+        )),
+      br(),
+      
+      fluidRow(column(12,
+        h4("As our gift to you this 2017 Xmas, Dan and I made an app for mapping out familiy taste preferences. Using this app, you can see who likes what and who is most similiar to who in their taste preferences. To use the app, 
+           each of us needs to first rate our preferences on a series of food ingredients commonly found in recipes.
+           You can also see how your preferences are related to ingredients that commonly go together in recipes in North America, but also different cuisine worldwide.
+           The recipe data comes from", a(href="https://www.nature.com/articles/srep00196.pdf", target="_blank", "this paper"),", if you want to check it out. Happy mapping!") 
+      ))
+     
+        
+        
+      ),
+      
+    
+    
+    
+    
     tabPanel(
       "Rate Food",
       conditionalPanel(condition = "typeof input.person_id == 'undefined'",
