@@ -12,7 +12,7 @@ getNewIngred  <- function(this_person, pref_data){
 }
 
 getRadioButton <- function(name, family, image){
-          paste0("<label class='radio-inline'><input type='radio' name='person_id' value='", name, "'/><span><img src='", image , "'/></span> </label>")
+          paste0("<label class='radio'><input type='radio' name='person_id' value='", name, "'/><span><img src='", image , "' width='50'/></span> </label>")
 }
 
 ########## SERVER ############

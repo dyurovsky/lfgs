@@ -2,7 +2,7 @@
 
 - name:         Logan
   family:        Doran
-  image:        dan.jpg
+  image:        logan.jpg
 
 - name:         Cian
   family:        Doran
@@ -26,7 +26,7 @@
 
 - name:         Bonnie
   family:        Lewis
-  image:        bonnie.jpg
+  image:        bonnie.png
 
 - name:         Molly
   family:        Lewovsky
@@ -38,19 +38,19 @@
 
 - name:         Jimmy
   family:        Courtice
-  image:        jimmy.jpg
+  image:        jimmy.png
 
 - name:         Melaney
   family:        Courtice
-  image:        melaney.jpg
+  image:        melaney.png
 
 - name:         Emma
   family:        Courtice
-  image:        emma.jpg
+  image:        emma.png
 
 - name:         Abby
   family:        Courtice
-  image:        abby.jpg
+  image:        abby.png
 
 
 
