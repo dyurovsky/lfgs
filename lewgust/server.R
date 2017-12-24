@@ -1,13 +1,15 @@
 ########## HELPER ############
-getNewIngred  <- function(this_person, starting_data){
-  current_data <- starting_data %>%
+getNewIngred  <- function(this_person, pref_data){
+  current_data <- pref_data %>%
     filter(person == this_person)
+  
+  print(current_data)
   
   sampled <- ingredients %>%
      anti_join(current_data %>% rename(id = ingredient), by = "id") %>%
      sample_n(1, weight = sampling_weights)
   
-  sampled$id
+  pull(sampled, id)
 }
 
 getRadioButton <- function(name, family, image){
@@ -51,9 +53,10 @@ rv <- reactiveValues()
 
       # write to google form
       gs_add_row(output_data, ws = "Sheet1",
-                 input = c(rv$current_ingredient, name, rating))
+                 input = c(name, rv$current_ingredient, rating))
+      
       # save internal state
-      starting_data <- add_row(starting_data,
+      starting_data <<- add_row(starting_data,
               ingredient = rv$current_ingredient,
               person = name,
               rating = rating)
