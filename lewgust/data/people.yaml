@@ -1,0 +1,57 @@
+#----------------
+
+- name:         Logan
+  group:        Doran
+  image:        dan.jpg
+
+- name:         Cian
+  group:        Doran
+  image:        cian.jpg
+
+- name:         Heather
+  group:        Doran
+  image:        heather.jpg
+
+- name:         Mary
+  group:        Doran
+  image:        mary.jpg
+
+- name:         Leticia
+  group:        Doran
+  image:        leticia.jpg
+
+- name:         Marshall
+  group:        Lewis
+  image:        marshall.jpg
+
+- name:         Bonnie
+  group:        Lewis
+  image:        bonnie.jpg
+
+- name:         Molly
+  group:        Lewovsky
+  image:        molly.jpg
+
+- name:         Dan
+  group:        Lewovsky
+  image:        dan.jpg
+
+- name:         Jimmy
+  group:        Courtice
+  image:        jimmy.jpg
+
+- name:         Melaney
+  group:        Courtice
+  image:        melaney.jpg
+
+- name:         Emma
+  group:        Courtice
+  image:        emma.jpg
+
+- name:         Abby
+  group:        Courtice
+  image:        abby.jpg
+
+
+
+
