@@ -34,3 +34,7 @@ vignettes/*.pdf
 
 .DS_Store
 .Rproj.user
+
+raw_data/*
+processed_data/*.csv
+
