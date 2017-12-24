@@ -106,12 +106,14 @@ rv <- reactiveValues()
       
       gs_vals %>%
         filter(ingredient == input$ingredient_pref) %>%
-        ggplot(aes(x = person, y = rating)) + 
-        geom_bar(stat = "identity", fill = "#e41a1c") +
+        left_join(families) %>%
+        ggplot(aes(x = person, y = rating, fill = family)) + 
+        geom_bar(stat = "identity") +
         ylim(0,10) + 
         xlab("") +
         ggtitle(paste0("Preferences for ", input$ingredient_pref)) +
-        theme(axis.text.x=element_text(angle = 90, vjust=0.5, hjust=1))
+        theme(axis.text.x=element_text(angle = 90, vjust=0.5, hjust=1)) + 
+        scale_fill_brewer(palette = "Set2")
       
     } else if(input$plot_type == "person") {
       req(input$person_pref)

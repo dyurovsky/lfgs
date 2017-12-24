@@ -6,9 +6,11 @@ library(repurrrsive)
 library(data.table)
 library(feather)
 library(widyr)
+library(igraph)
 library(visNetwork)
 library(shinythemes)
 library(shinyBS)
+library(corrr)
 
 GAP_KEY <- "12deHY0Q_H7W6NrK2K4TlIWZvlXTCcRqpiAGDB1gVvjI"
 
@@ -40,6 +42,12 @@ pairs <- read_feather("data/all_pairs.feather") %>%
 cuisines <- pairs %>% distinct(type) %>% pull()
 
 theme_set(theme_classic(base_size = 16))
+
+families <- people_data %>%
+  as.data.frame() %>%
+  mutate(name = tolower(name), family = tolower(family)) %>%
+  rename(person = name) %>%
+  select(-image)
 
 ingredient_palette <- data_frame(color = c("#a6cee3", "#1f78b4", "#b2df8a", 
                                            "#33a02c", "#fb9a99", "#e31a1c", 
