@@ -1,9 +1,10 @@
+library(tidyverse)
 library(shiny)
 library(markdown)
-library(tidyverse)
 library(googlesheets)
-library(feather)
 library(repurrrsive)
+library(data.table)
+library(feather)
 library(widyr)
 library(visNetwork)
 library(shinythemes)
@@ -17,19 +18,21 @@ rating_data <- GAP_KEY %>%
 starting_data <- gs_read_csv(rating_data)
 
 ingredients <- read_feather("data/american_ingredients.feather") %>%
-  mutate(sampling_weights = exp(n/1000),
-         id = ingredient,
-         value = n) %>%
-         #group = category) %>%
-  mutate(label = id)
+  rename(id = ingredient,
+         value = n,
+         group = category) %>%
+  mutate(sampling_weights = exp(value/1000),
+         label = id)
 
 people_data <- yaml::yaml.load_file("data/people.yaml") %>%
-  transpose() %>%
+  purrr::transpose() %>%
   simplify_all() 
 
-people <- tolower(people_data$name)
+#people <- c("Everyone", tolower(people_data$name))
 
-pairs <- read_feather("data/american_pairs.feather") %>%
+people <- c("Everyone", starting_data %>% distinct(person) %>% pull())
+
+pairs <- read_feather("data/all_pairs.feather") %>%
   filter(item1 %in% ingredients$id,
          item2 %in% ingredients$id) %>%
   rename(from = item1, to = item2)
@@ -42,8 +45,8 @@ ingredient_palette <- data_frame(color = c("#a6cee3", "#1f78b4", "#b2df8a",
                                            "#33a02c", "#fb9a99", "#e31a1c", 
                                            "#fdbf6f", "#ff7f00", "#cab2d6", 
                                            "#6a3d9a", "#ffff99", "#b15928",
-                                           "#f0f0f0", "#bdbdbd"))
-                                # group = unique(ingredients$group))
+                                           "#f0f0f0", "#bdbdbd"),
+                                 group = unique(ingredients$group))
 
-#ingredients_colored <- left_join(ingredients, ingredient_palette)
+ingredients_colored <- left_join(ingredients, ingredient_palette)
 

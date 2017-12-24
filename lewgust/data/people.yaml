@@ -1,55 +1,55 @@
 #----------------
 
 - name:         Logan
-  group:        Doran
+  family:        Doran
   image:        dan.jpg
 
 - name:         Cian
-  group:        Doran
+  family:        Doran
   image:        cian.jpg
 
 - name:         Heather
-  group:        Doran
+  family:        Doran
   image:        heather.jpg
 
 - name:         Mary
-  group:        Doran
+  family:        Doran
   image:        mary.jpg
 
 - name:         Leticia
-  group:        Doran
+  family:        Doran
   image:        leticia.jpg
 
 - name:         Marshall
-  group:        Lewis
+  family:        Lewis
   image:        marshall.jpg
 
 - name:         Bonnie
-  group:        Lewis
+  family:        Lewis
   image:        bonnie.jpg
 
 - name:         Molly
-  group:        Lewovsky
+  family:        Lewovsky
   image:        molly.jpg
 
 - name:         Dan
-  group:        Lewovsky
+  family:        Lewovsky
   image:        dan.jpg
 
 - name:         Jimmy
-  group:        Courtice
+  family:        Courtice
   image:        jimmy.jpg
 
 - name:         Melaney
-  group:        Courtice
+  family:        Courtice
   image:        melaney.jpg
 
 - name:         Emma
-  group:        Courtice
+  family:        Courtice
   image:        emma.jpg
 
 - name:         Abby
-  group:        Courtice
+  family:        Courtice
   image:        abby.jpg
 
 
