@@ -24,31 +24,23 @@ shinyUI(fluidPage(
           HTML("<br><br><br>"),
           uiOutput("current_food"),
           HTML("<br><br><br>"),
-          fluidRow(column(
-            width = 3,
-            align = 'center',
-            # wellPanel(
-            sliderInput(
+          sliderInput(
               "tastiness_rating",
               0,
               10,
-              width = "400px",
-              value = 5,
+              width = "650px",
+              value = 5.5,
               step = .1,
               label = div(
-                style = 'width:400px;',
+                style = 'width:650px;',
                 div(style =
                       'float:left;', 'gross!'),
                 div(style =
                       'float:right;', 'yum!')
               )
-            ),
-            offset = 4
           ))
         )
-
-      )
-    ),
+      ),
     tabPanel("Your Preferences",
              verbatimTextOutput("summary")),
     navbarMenu(

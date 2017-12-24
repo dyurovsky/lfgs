@@ -1,9 +1,8 @@
 ########## HELPER ############
 getNewIngred  <- function(this_person, pref_data){
+  
   current_data <- pref_data %>%
     filter(person == this_person)
-  
-  print(current_data)
   
   sampled <- ingredients %>%
      anti_join(current_data %>% rename(id = ingredient), by = "id") %>%
@@ -20,7 +19,7 @@ getRadioButton <- function(name, family, image){
 shinyServer(function(input, output, session) {
   output$loaded <- reactive(0)
   outputOptions(output, "loaded", suspendWhenHidden = FALSE)
-
+  
   output$current_person <- renderUI({
     h4(paste0('You are: ', input$person_id), style = "color:grey")
     })
@@ -39,6 +38,7 @@ rv <- reactiveValues()
 
   observeEvent(input$person_id, {
       name <- tolower(input$person_id)
+
       rv$current_ingredient <- getNewIngred(name, starting_data)
 
       output$current_food <- renderUI({
@@ -52,8 +52,8 @@ rv <- reactiveValues()
       rating <- input$tastiness_rating
 
       # write to google form
-      gs_add_row(output_data, ws = "Sheet1",
-                 input = c(name, rv$current_ingredient, rating))
+      gs_add_row(rating_data, ws = "Sheet1",
+                 input = c(rv$current_ingredient, name, rating))
       
       # save internal state
       starting_data <<- add_row(starting_data,
@@ -61,7 +61,9 @@ rv <- reactiveValues()
               person = name,
               rating = rating)
 
+      #updateSliderInput(session,"tastiness_rating",value = 5)
       rv$current_ingredient <- getNewIngred(name, starting_data)
+
 
     },  ignoreInit = TRUE)
 #   
@@ -72,10 +74,8 @@ rv <- reactiveValues()
     
     gs_vals <- starting_data
     
-    print("here")
-    
     if(input$plot_type == "ingredient") {
-      print("here again")
+
       ingredients <- gs_vals %>%
         distinct(ingredient) %>%
         pull()

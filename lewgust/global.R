@@ -28,9 +28,9 @@ people_data <- yaml::yaml.load_file("data/people.yaml") %>%
   purrr::transpose() %>%
   simplify_all() 
 
-#people <- c("Everyone", tolower(people_data$name))
+people <- c("Everyone", tolower(people_data$name))
 
-people <- c("Everyone", starting_data %>% distinct(person) %>% pull())
+#people <- c("Everyone", starting_data %>% distinct(person) %>% pull())
 
 pairs <- read_feather("data/all_pairs.feather") %>%
   filter(item1 %in% ingredients$id,
