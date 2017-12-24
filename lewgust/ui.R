@@ -1,7 +1,7 @@
 
 
 shinyUI(fluidPage(
-  theme = shinytheme("spacelab"),
+  #theme = shinytheme("spacelab"),
   tags$style(
     type = 'text/css',
     ".selectize-input { font-size: 12px; line-height: 12px;} .selectize-dropdown { font-size: 12px; line-height: 12px; }"
