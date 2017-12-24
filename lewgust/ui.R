@@ -69,12 +69,16 @@ shinyUI(fluidPage(
           ))
         )
       ),
-    tabPanel("Your Preferences",
-             verbatimTextOutput("summary")),
-    navbarMenu(
+    tabPanel(
       "Lewis Family Preferences",
-      tabPanel("Table",
-               DT::dataTableOutput("table"))
+      verticalLayout(
+        plotOutput("corr_plot"),
+        HTML("<br>"),
+        h4("These circles show how similar everyones preferences are. 
+           Blue means similar, red means dissimilar. 
+           The larger and darker the circle, the stronger the relationship")
+        )
+        
     ),
     tabPanel("Who likes what",
              sidebarLayout(

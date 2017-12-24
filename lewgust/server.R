@@ -66,7 +66,7 @@ rv <- reactiveValues()
 
 
     },  ignoreInit = TRUE)
-#   
+   
   ########## PREFERENCE PLOTS ########## 
   
   output$pref_selector <- renderUI({
@@ -196,6 +196,22 @@ rv <- reactiveValues()
       visIgraphLayout(layout = "layout_nicely", randomSeed = 123, physics = F) %>%
       visOptions(highlightNearest = list(enabled = T, degree = 1, hover = T)) %>%
       visLegend(position = "right", ncol =2, addNodes = legend(), useGroups = F)
+  })
+  
+  ########## CORRELATION PLOTS ##########
+  output$corr_plot <- renderPlot({
+    
+    corrs <- starting_data %>%
+      spread(person, rating) %>%
+      remove_rownames() %>%
+      as.data.frame() %>%
+      column_to_rownames(var = "ingredient") %>%
+      correlate() %>%
+      shave()
+    
+    rplot(corrs) + 
+      theme_classic(base_size = 16) + 
+      theme(legend.position = "none")
   })
   
   output$loaded <- reactive(1)
